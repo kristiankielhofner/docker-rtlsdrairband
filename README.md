@@ -36,7 +36,7 @@ docker run \
  -p 8000:8000 \
  -e RTLSDRAIRBAND_FREQS=123.9 \
  --device /dev/bus/usb:/dev/bus/usb \
-fredclausen/rtlsdrairband
+kristiankielhofner/rtlsdrairband
 ```
 
 You should obviously replace `RTLSDRAIRBAND_FREQS` with a frequency you wish to monitor.
@@ -48,7 +48,7 @@ version: '2.0'
 
 services:
   rtlsdirairband:
-    image: fredclausen/rtlsdrairband
+    image: kristiankielhofner/rtlsdrairband
     tty: true
     container_name: rtlsdrairband
     restart: always
@@ -151,14 +151,6 @@ When that value is set, all `RTLSDRAIRBAND_*` configuration values are ignored a
 
 In the mounted volume, provide a file named `rtl_airband.conf` with your configuration. See [RTLSDR-Airband configuration](https://github.com/szpajder/RTLSDR-Airband/wiki/Configuration-essentials) for details on proper formatting of the file.
 
-SoapySDR support for the following hardware is provided:
-
-* HackRF
-* AirSpy & AirSpy HF
-* LimeSDR
-* BladeRF
-* PlutoSDR
-* SoapyRemote
 
 ### Icecast Advanced Mode
 
@@ -176,7 +168,9 @@ In the mounted volume, provide a file named `icecast.xml` with your configuratio
 
 ## NFM
 
-The primary purpose of this container is to monitor VHF airband communications. However, the underlying software is not limited to strictly VHF communications and AM modulation. Using the `fredclausen/rtlsdrairband:latest_nfm` image you have the ability to enable NFM modulation and monitor additional radio communications (as I understand it, things like Railroad communications). This is not enabled in the `latest` tag by default because of the additional CPU overhead required (should be marginal, but not negligible if your hardware is constrained), but if you desire the functionality, please use the `latest_nfm` tag.
+The primary purpose of this container is to monitor VHF airband communications. However, the underlying software is not limited to strictly VHF communications and AM modulation. Using the `kristiankielhofner/rtlsdrairband:latest_nfm` image you have the ability to enable NFM modulation and monitor additional radio communications (as I understand it, things like Railroad communications). This is not enabled in the `latest` tag by default because of the additional CPU overhead required (should be marginal, but not negligible if your hardware is constrained), but if you desire the functionality, please use the `latest_nfm` tag.
+
+You will also have to set the `NFM_MAKE=1` environment variable when starting the container or using docker-compose.
 
 ## Accessing the Web Interface
 
@@ -188,4 +182,4 @@ The web interface for the container can be found at `containerip:8000` or `conta
 
 ## Getting Help
 
-You can [log an issue](https://github.com/fredclausen/docker-rtlsdrairband/issues) on the project's GitHub.
+You can [log an issue](https://github.com/kristiankielhofner/docker-rtlsdrairband/issues) on the project's GitHub.
