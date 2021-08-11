@@ -36,7 +36,7 @@ docker run \
  -p 8000:8000 \
  -e RTLSDRAIRBAND_FREQS=123.9 \
  --device /dev/bus/usb:/dev/bus/usb \
-kristiankielhofner/rtlsdrairband
+krisk84/rtlsdrairband
 ```
 
 You should obviously replace `RTLSDRAIRBAND_FREQS` with a frequency you wish to monitor.
@@ -48,7 +48,7 @@ version: '2.0'
 
 services:
   rtlsdirairband:
-    image: kristiankielhofner/rtlsdrairband
+    image: krisk84/rtlsdrairband
     tty: true
     container_name: rtlsdrairband
     restart: always
