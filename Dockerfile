@@ -58,6 +58,9 @@ RUN set -x && \
     # libusb-1.0-0 + dev - Required for rtl-sdr, libiio (bladeRF/PlutoSDR).
     KEPT_PACKAGES+=(libusb-1.0-0) && \
     TEMP_PACKAGES+=(libusb-1.0-0-dev) && \
+    # pulse support
+    KEPT_PACKAGES+=(libpulse0) && \
+    KEPT_PACKAGES+=(libpulse-dev) && \
     # packages for icecast
     KEPT_PACKAGES+=(libxml2) && \
     TEMP_PACKAGES+=(libxml2-dev) && \
@@ -132,6 +135,7 @@ RUN set -x && \
     KEPT_PACKAGES+=(libogg-dev) && \
     KEPT_PACKAGES+=(libshout3-dev) && \
     KEPT_PACKAGES+=(libvorbis-dev) && \
+    KEPT_PACKAGES+=(libpulse-dev) && \
     KEPT_PACKAGES+=(make) && \
     apt-get install -y --no-install-recommends \
       ${KEPT_PACKAGES[@]} \

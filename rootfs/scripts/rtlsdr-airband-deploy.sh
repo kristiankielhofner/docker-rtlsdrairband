@@ -68,14 +68,14 @@ if [ -z "${ARCH}" ]; then
 fi
 
 echo "[$APPNAME] Arch is $ARCH"
-echo "[$APPNAME] Using make options PLATFORM=$PLATFORM WITH_SOAPYSDR=0 NFM=$NFM_MAKE"
+echo "[$APPNAME] Using make options PLATFORM=$PLATFORM WITH_SOAPYSDR=0 NFM=$NFM_MAKE PULSE=1"
 echo "[$APPNAME] Writing build script: /scripts/build_rtl_airband.sh"
 
 # Write build script (to be executed by /etc/cont-init.d/01-build-rtl_airband)
 {
   echo "#!/usr/bin/env bash"
   echo "pushd /opt/rtlsdr-airband > /dev/null || exit 1"
-  echo "make PLATFORM=\"$PLATFORM\" WITH_SOAPYSDR=0 NFM=\"$NFM_MAKE\""
+  echo "make PLATFORM=\"$PLATFORM\" WITH_SOAPYSDR=0 NFM=\"$NFM_MAKE\" PULSE=1"
   echo "make install"
   echo "popd > /dev/null"
 } > /scripts/build_rtl_airband.sh

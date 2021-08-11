@@ -13,7 +13,7 @@ export DOCKER_CLI_EXPERIMENTAL="enabled"
 
 # Don't built non NFM variant
 # Build & push latest
-#docker buildx build --no-cache -t "${REPO}/${IMAGE}:latest" --compress --push --platform "${PLATFORMS}" .
+docker buildx build --no-cache -t "${REPO}/${IMAGE}:latest" --compress --push --platform "${PLATFORMS}" .
 
 sed 's/NFM_MAKE=0/NFM_MAKE=1/g' < Dockerfile > Dockerfile.NFM
 
